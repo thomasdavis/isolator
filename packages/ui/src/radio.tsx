@@ -5,12 +5,16 @@ import { Radio as BaseRadio } from "@base-ui/react/radio";
 import type { ComponentProps } from "react";
 import styles from "./radio.module.css";
 
+export interface RadioGroupRootProps extends ComponentProps<typeof BaseRadioGroup> {
+  className?: string;
+}
+
 function RadioGroupRoot({
   className,
   ...props
-}: ComponentProps<typeof BaseRadioGroup.Root>) {
+}: RadioGroupRootProps) {
   return (
-    <BaseRadioGroup.Root className={`${styles.group} ${className ?? ""}`} {...props} />
+    <BaseRadioGroup className={`${styles.group} ${className ?? ""}`} {...props} />
   );
 }
 
@@ -42,4 +46,5 @@ export const RadioGroup = {
 export const Radio = {
   Root: RadioRoot,
   Indicator: RadioIndicator,
+  Item: RadioRoot, // Alias for convenience
 };

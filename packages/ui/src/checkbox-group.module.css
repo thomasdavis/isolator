@@ -1,0 +1,23 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+
+.item:has([data-disabled]) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.label {
+  font-size: var(--font-size-small);
+  color: var(--color-text);
+  user-select: none;
+}

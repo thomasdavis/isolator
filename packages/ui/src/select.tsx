@@ -4,11 +4,8 @@ import { Select as BaseSelect } from "@base-ui/react/select";
 import type { ComponentProps } from "react";
 import styles from "./select.module.css";
 
-function SelectRoot({
-  className,
-  ...props
-}: ComponentProps<typeof BaseSelect.Root>) {
-  return <BaseSelect.Root className={className} {...props} />;
+function SelectRoot(props: ComponentProps<typeof BaseSelect.Root>) {
+  return <BaseSelect.Root {...props} />;
 }
 
 export interface SelectTriggerProps extends ComponentProps<typeof BaseSelect.Trigger> {
