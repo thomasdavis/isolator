@@ -1,0 +1,51 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-surface-3);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.indicator {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--transition-normal), background-color var(--transition-fast);
+}
+
+/* Status colors based on value thresholds */
+.indicator[data-status="safe"] {
+  background-color: var(--color-success);
+}
+
+.indicator[data-status="caution"] {
+  background-color: var(--color-warning);
+}
+
+.indicator[data-status="danger"] {
+  background-color: var(--color-danger);
+}
+
+/* Default color if no status */
+.indicator:not([data-status]) {
+  background-color: var(--color-accent);
+}
+
+/* Sizes */
+.sm {
+  height: 4px;
+}
+
+.md {
+  height: 8px;
+}
+
+.lg {
+  height: 12px;
+}

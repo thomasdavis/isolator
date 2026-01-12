@@ -1,0 +1,57 @@
+.trigger {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 2px;
+  color: var(--color-accent);
+}
+
+.trigger:hover {
+  text-decoration-thickness: 2px;
+}
+
+.positioner {
+  z-index: var(--z-popover);
+}
+
+.popup {
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-4);
+  min-width: 280px;
+  max-width: 360px;
+}
+
+.popup:focus {
+  outline: none;
+}
+
+.arrow {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border-strong);
+  transform: rotate(45deg);
+}
+
+.arrow[data-side="top"] {
+  border-top: none;
+  border-left: none;
+}
+
+.arrow[data-side="bottom"] {
+  border-bottom: none;
+  border-right: none;
+}
+
+.arrow[data-side="left"] {
+  border-left: none;
+  border-bottom: none;
+}
+
+.arrow[data-side="right"] {
+  border-right: none;
+  border-top: none;
+}
