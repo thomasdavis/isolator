@@ -86,7 +86,7 @@ const quicksortCode = `def quicksort(arr):
 
 export default function StyleguidePage() {
   const [togglePressed, setTogglePressed] = useState(false);
-  const [alignment, setAlignment] = useState("left");
+  const [alignment, setAlignment] = useState<readonly string[]>(["left"]);
   const [sliderValue, setSliderValue] = useState(50);
   const [numberValue, setNumberValue] = useState(42);
 
@@ -646,9 +646,9 @@ export default function StyleguidePage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Select (Base UI)</h2>
             <div style={{ maxWidth: "200px" }}>
-              <Select.Root>
+              <Select.Root defaultValue="python">
                 <Select.Trigger>
-                  <Select.Value placeholder="Select..." />
+                  <Select.Value />
                   <Select.Icon />
                 </Select.Trigger>
                 <Select.Portal>
@@ -673,7 +673,7 @@ export default function StyleguidePage() {
             <h2 className={styles.sectionTitle}>Badge (Base UI)</h2>
             <div className={styles.componentRow}>
               <Badge>Default</Badge>
-              <Badge variant="accent">Accent</Badge>
+              <Badge variant="warning">Warning</Badge>
               <Badge variant="success">Success</Badge>
             </div>
           </section>
@@ -832,7 +832,7 @@ export default function StyleguidePage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Slider</h2>
             <div style={{ maxWidth: "300px" }}>
-              <Slider.Root value={sliderValue} onValueChange={setSliderValue} min={0} max={100}>
+              <Slider.Root value={sliderValue} onValueChange={(v) => setSliderValue(typeof v === 'number' ? v : (v[0] ?? 0))} min={0} max={100}>
                 <Slider.Track><Slider.Indicator /></Slider.Track>
                 <Slider.Thumb />
               </Slider.Root>
