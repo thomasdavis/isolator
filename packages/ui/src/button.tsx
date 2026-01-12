@@ -1,7 +1,6 @@
 "use client";
 
-import { Button as BaseButton } from "@base-ui/react/button";
-import type { ReactNode, ButtonHTMLAttributes } from "react";
+import { forwardRef, type ReactNode, type ButtonHTMLAttributes } from "react";
 import styles from "./button.module.css";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -10,19 +9,19 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
 }
 
-export function Button({
-  variant = "primary",
-  size = "md",
-  className,
-  children,
-  ...props
-}: ButtonProps) {
-  return (
-    <BaseButton
-      className={`${styles.button} ${styles[variant]} ${styles[size]} ${className ?? ""}`}
-      {...props}
-    >
-      {children}
-    </BaseButton>
-  );
-}
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(
+    { variant = "primary", size = "md", className, children, ...props },
+    ref
+  ) {
+    return (
+      <button
+        ref={ref}
+        className={`${styles.button} ${styles[variant]} ${styles[size]} ${className ?? ""}`}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+);

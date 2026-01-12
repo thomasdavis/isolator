@@ -696,14 +696,14 @@ export default function StyleguidePage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Dialog</h2>
             <Dialog.Root>
-              <Dialog.Trigger><Button>Open Dialog</Button></Dialog.Trigger>
+              <Dialog.Trigger render={<Button />}>Open Dialog</Dialog.Trigger>
               <Dialog.Portal>
                 <Dialog.Backdrop />
                 <Dialog.Popup>
                   <Dialog.Title>Dialog</Dialog.Title>
                   <Dialog.Description>Dialog content here.</Dialog.Description>
                   <div className={styles.dialogActions}>
-                    <Dialog.Close><Button variant="ghost">Close</Button></Dialog.Close>
+                    <Dialog.Close render={<Button variant="ghost" />}>Close</Dialog.Close>
                   </div>
                 </Dialog.Popup>
               </Dialog.Portal>
@@ -716,7 +716,7 @@ export default function StyleguidePage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Popover</h2>
             <Popover.Root>
-              <Popover.Trigger><Button variant="secondary">Popover</Button></Popover.Trigger>
+              <Popover.Trigger render={<Button variant="secondary" />}>Popover</Popover.Trigger>
               <Popover.Portal>
                 <Popover.Positioner>
                   <Popover.Popup>Popover content</Popover.Popup>
@@ -731,7 +731,7 @@ export default function StyleguidePage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Tooltip</h2>
             <Tooltip.Root>
-              <Tooltip.Trigger><Button variant="ghost">Hover</Button></Tooltip.Trigger>
+              <Tooltip.Trigger render={<Button variant="ghost" />}>Hover</Tooltip.Trigger>
               <Tooltip.Portal>
                 <Tooltip.Positioner>
                   <Tooltip.Popup>Tooltip text</Tooltip.Popup>
@@ -746,7 +746,7 @@ export default function StyleguidePage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Menu</h2>
             <Menu.Root>
-              <Menu.Trigger><Button variant="secondary">Menu ▾</Button></Menu.Trigger>
+              <Menu.Trigger render={<Button variant="secondary" />}>Menu ▾</Menu.Trigger>
               <Menu.Portal>
                 <Menu.Positioner>
                   <Menu.Popup>
