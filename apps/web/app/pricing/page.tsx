@@ -21,10 +21,11 @@ const plans = [
     popular: false,
   },
   {
-    name: "Developer",
-    price: "$29",
+    name: "Development",
+    price: "$7",
     period: "/month",
     description: "For individual developers and side projects",
+    specs: "1 vCPU, 2GB RAM",
     features: [
       "5 concurrent containers",
       "100 requests/minute",
@@ -36,12 +37,14 @@ const plans = [
     cta: "Start Trial",
     ctaHref: "/console",
     popular: true,
+    savings: "Save 77% vs AWS ECS Fargate",
   },
   {
-    name: "Team",
-    price: "$149",
+    name: "Production",
+    price: "$91",
     period: "/month",
     description: "For growing teams and production apps",
+    specs: "4 concurrent, 91 RPM",
     features: [
       "25 concurrent containers",
       "1,000 requests/minute",
@@ -132,6 +135,12 @@ export default function PricingPage() {
                       <span className={styles.period}>{plan.period}</span>
                     </div>
                     <p className={styles.planDesc}>{plan.description}</p>
+                    {"specs" in plan && plan.specs && (
+                      <p className={styles.planSpecs}>{plan.specs}</p>
+                    )}
+                    {"savings" in plan && plan.savings && (
+                      <p className={styles.savingsBadge}>{plan.savings}</p>
+                    )}
                   </div>
                   <ul className={styles.features}>
                     {plan.features.map((feature) => (
@@ -162,8 +171,8 @@ export default function PricingPage() {
                   <tr>
                     <th>Feature</th>
                     <th>Free</th>
-                    <th>Developer</th>
-                    <th>Team</th>
+                    <th>Development</th>
+                    <th>Production</th>
                     <th>Enterprise</th>
                   </tr>
                 </thead>

@@ -5,132 +5,87 @@ import styles from "./playground.module.css";
 import { useState } from "react";
 
 const languages = [
-  { id: "python", name: "Python", icon: "🐍" },
-  { id: "javascript", name: "JavaScript", icon: "📜" },
-  { id: "typescript", name: "TypeScript", icon: "📘" },
-  { id: "go", name: "Go", icon: "🐹" },
-  { id: "rust", name: "Rust", icon: "🦀" },
-  { id: "java", name: "Java", icon: "☕" },
-  { id: "cpp", name: "C++", icon: "⚡" },
-  { id: "ruby", name: "Ruby", icon: "💎" },
+  { id: "python", name: "Python" },
+  { id: "javascript", name: "JavaScript" },
+  { id: "typescript", name: "TypeScript" },
+  { id: "go", name: "Go" },
+  { id: "rust", name: "Rust" },
+  { id: "java", name: "Java" },
+  { id: "cpp", name: "C++" },
+  { id: "ruby", name: "Ruby" },
+  { id: "c", name: "C" },
+  { id: "csharp", name: "C#" },
+  { id: "php", name: "PHP" },
+  { id: "swift", name: "Swift" },
+  { id: "kotlin", name: "Kotlin" },
+  { id: "scala", name: "Scala" },
+  { id: "haskell", name: "Haskell" },
+  { id: "lua", name: "Lua" },
+  { id: "perl", name: "Perl" },
+  { id: "r", name: "R" },
+  { id: "julia", name: "Julia" },
+  { id: "elixir", name: "Elixir" },
+  { id: "clojure", name: "Clojure" },
+  { id: "fortran", name: "Fortran" },
+  { id: "cobol", name: "COBOL" },
+  { id: "zig", name: "Zig" },
+];
+
+const examplePrompts = [
+  "Write a quicksort function and print the sorted result of [64, 34, 25, 12, 22, 11, 90] to stdout",
+  "Create a simple HTTP server that responds with 'Hello, World!'",
+  "Implement a binary search tree with insert and search methods",
 ];
 
 const defaultCode: Record<string, string> = {
-  python: `# Python Example
-def fibonacci(n):
-    if n <= 1:
-        return n
-    return fibonacci(n-1) + fibonacci(n-2)
+  python: `# Paste, edit, or generate code here...
 
-for i in range(10):
-    print(f"fib({i}) = {fibonacci(i)}")`,
-  javascript: `// JavaScript Example
-function fibonacci(n) {
-  if (n <= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quicksort(left) + middle + quicksort(right)
+
+numbers = [64, 34, 25, 12, 22, 11, 90]
+print(quicksort(numbers))`,
+  javascript: `// Paste, edit, or generate code here...
+
+function quicksort(arr) {
+  if (arr.length <= 1) return arr;
+  const pivot = arr[Math.floor(arr.length / 2)];
+  const left = arr.filter(x => x < pivot);
+  const middle = arr.filter(x => x === pivot);
+  const right = arr.filter(x => x > pivot);
+  return [...quicksort(left), ...middle, ...quicksort(right)];
 }
 
-for (let i = 0; i < 10; i++) {
-  console.log(\`fib(\${i}) = \${fibonacci(i)}\`);
-}`,
-  typescript: `// TypeScript Example
-function fibonacci(n: number): number {
-  if (n <= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-for (let i = 0; i < 10; i++) {
-  console.log(\`fib(\${i}) = \${fibonacci(i)}\`);
-}`,
-  go: `// Go Example
-package main
-
-import "fmt"
-
-func fibonacci(n int) int {
-    if n <= 1 {
-        return n
-    }
-    return fibonacci(n-1) + fibonacci(n-2)
-}
-
-func main() {
-    for i := 0; i < 10; i++ {
-        fmt.Printf("fib(%d) = %d\\n", i, fibonacci(i))
-    }
-}`,
-  rust: `// Rust Example
-fn fibonacci(n: u32) -> u32 {
-    if n <= 1 {
-        return n;
-    }
-    fibonacci(n - 1) + fibonacci(n - 2)
-}
-
-fn main() {
-    for i in 0..10 {
-        println!("fib({}) = {}", i, fibonacci(i));
-    }
-}`,
-  java: `// Java Example
-public class Main {
-    public static int fibonacci(int n) {
-        if (n <= 1) return n;
-        return fibonacci(n - 1) + fibonacci(n - 2);
-    }
-
-    public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            System.out.printf("fib(%d) = %d%n", i, fibonacci(i));
-        }
-    }
-}`,
-  cpp: `// C++ Example
-#include <iostream>
-
-int fibonacci(int n) {
-    if (n <= 1) return n;
-    return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-int main() {
-    for (int i = 0; i < 10; i++) {
-        std::cout << "fib(" << i << ") = " << fibonacci(i) << std::endl;
-    }
-    return 0;
-}`,
-  ruby: `# Ruby Example
-def fibonacci(n)
-  return n if n <= 1
-  fibonacci(n - 1) + fibonacci(n - 2)
-end
-
-10.times do |i|
-  puts "fib(#{i}) = #{fibonacci(i)}"
-end`,
+const numbers = [64, 34, 25, 12, 22, 11, 90];
+console.log(quicksort(numbers));`,
 };
 
-const mockOutput = `fib(0) = 0
-fib(1) = 1
-fib(2) = 1
-fib(3) = 2
-fib(4) = 3
-fib(5) = 5
-fib(6) = 8
-fib(7) = 13
-fib(8) = 21
-fib(9) = 34`;
+const mockOutput = `[11, 12, 22, 25, 34, 64, 90]
+
+Process exited with code 0
+Execution time: 23ms`;
 
 export default function PlaygroundPage() {
   const [selectedLang, setSelectedLang] = useState("python");
-  const [code, setCode] = useState(defaultCode.python);
+  const [code, setCode] = useState(defaultCode.python || "");
   const [output, setOutput] = useState("");
   const [isRunning, setIsRunning] = useState(false);
-  const [networkMode, setNetworkMode] = useState("zerotrust");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [prompt, setPrompt] = useState(examplePrompts[0]);
+  const [envVars, setEnvVars] = useState("DEBUG=true\nUSERNAME=demo");
+  const [returnArtifact, setReturnArtifact] = useState(true);
+  const [returnWasm, setReturnWasm] = useState(true);
+  const [autoFix, setAutoFix] = useState(false);
 
   const handleLanguageChange = (langId: string) => {
     setSelectedLang(langId);
-    setCode(defaultCode[langId] || "");
+    setCode(defaultCode[langId] || `// Paste, edit, or generate code here...`);
     setOutput("");
   };
 
@@ -145,95 +100,121 @@ export default function PlaygroundPage() {
     }, 800);
   };
 
+  const handleGenerate = () => {
+    setIsGenerating(true);
+    // Simulate AI generation
+    setTimeout(() => {
+      const newCode = defaultCode[selectedLang] ?? defaultCode.python ?? "";
+      setCode(newCode);
+      setIsGenerating(false);
+    }, 1500);
+  };
+
+  const handleIterate = () => {
+    setIsGenerating(true);
+    setTimeout(() => {
+      setIsGenerating(false);
+    }, 1000);
+  };
+
   return (
     <>
       <Header />
       <div className={styles.playground}>
-        <div className={styles.toolbar}>
-          <div className={styles.toolbarLeft}>
-            <div className={styles.languageSelect}>
-              {languages.map((lang) => (
-                <button
-                  key={lang.id}
-                  className={`${styles.langBtn} ${selectedLang === lang.id ? styles.active : ""}`}
-                  onClick={() => handleLanguageChange(lang.id)}
-                >
-                  <span className={styles.langIcon}>{lang.icon}</span>
-                  <span className={styles.langName}>{lang.name}</span>
-                </button>
-              ))}
-            </div>
+        {/* AI Prompt Section */}
+        <div className={styles.promptSection}>
+          <div className={styles.promptHeader}>
+            <span className={styles.promptLabel}>unsandbox.</span>
+            <span className={styles.promptDesc}>
+              Write or generate code, execute in isolated containers, edit & fix syntax, download working binaries or WASM!
+            </span>
           </div>
-          <div className={styles.toolbarRight}>
-            <div className={styles.networkToggle}>
-              <span className={styles.toggleLabel}>Network:</span>
+          <textarea
+            className={styles.promptInput}
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder="Describe what code you want to generate..."
+            rows={2}
+          />
+          <div className={styles.exampleBtns}>
+            {examplePrompts.map((ex, i) => (
               <button
-                className={`${styles.networkBtn} ${networkMode === "zerotrust" ? styles.active : ""}`}
-                onClick={() => setNetworkMode("zerotrust")}
+                key={i}
+                className={styles.exampleBtn}
+                onClick={() => setPrompt(ex)}
               >
-                zerotrust
+                Example {i + 1}
               </button>
-              <button
-                className={`${styles.networkBtn} ${networkMode === "semitrusted" ? styles.active : ""}`}
-                onClick={() => setNetworkMode("semitrusted")}
-              >
-                semitrusted
-              </button>
-            </div>
-            <button
-              className={styles.runBtn}
-              onClick={handleRun}
-              disabled={isRunning}
+            ))}
+          </div>
+          <div className={styles.languageRow}>
+            <select
+              className={styles.langSelect}
+              value={selectedLang}
+              onChange={(e) => handleLanguageChange(e.target.value)}
             >
-              {isRunning ? (
-                <>
-                  <span className={styles.spinner}></span>
-                  Running...
-                </>
-              ) : (
-                <>
-                  <span className={styles.playIcon}>▶</span>
-                  Run
-                </>
-              )}
+              {languages.map((lang) => (
+                <option key={lang.id} value={lang.id}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.generateBtns}>
+            <button
+              className={styles.generateBtn}
+              onClick={handleGenerate}
+              disabled={isGenerating}
+            >
+              {isGenerating ? "Generating..." : "Generate New Code ✨"}
+            </button>
+            <button
+              className={styles.iterateBtn}
+              onClick={handleIterate}
+              disabled={isGenerating || !code}
+            >
+              Iterate on Code 🔄
             </button>
           </div>
         </div>
 
+        {/* Editor Section */}
         <div className={styles.editorContainer}>
           <div className={styles.editorPane}>
-            <div className={styles.paneHeader}>
-              <span className={styles.paneTitle}>
-                <span className={styles.fileIcon}>◆</span>
-                main.{selectedLang === "cpp" ? "cpp" : selectedLang === "javascript" ? "js" : selectedLang === "typescript" ? "ts" : selectedLang}
-              </span>
-            </div>
-            <div className={styles.editorWrapper}>
-              <div className={styles.lineNumbers}>
-                {(code || "").split("\n").map((_, i) => (
-                  <div key={i}>{i + 1}</div>
-                ))}
-              </div>
-              <textarea
-                className={styles.editor}
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-                spellCheck={false}
-              />
-            </div>
+            <textarea
+              className={styles.editor}
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              placeholder="Paste, edit, or generate code here..."
+              spellCheck={false}
+            />
           </div>
 
           <div className={styles.outputPane}>
-            <div className={styles.paneHeader}>
-              <span className={styles.paneTitle}>
-                <span className={styles.termIcon}>▸</span>
-                Output
-              </span>
-              {output && (
-                <span className={styles.execInfo}>
-                  Executed in 42ms
-                </span>
+            <div className={styles.outputHeader}>
+              {output ? (
+                <span className={styles.outputSuccess}>✓ Executed successfully</span>
+              ) : (
+                <span>Execute code to see output here</span>
               )}
+            </div>
+            <div className={styles.outputOptions}>
+              <label className={styles.checkbox}>
+                <input
+                  type="checkbox"
+                  checked={returnArtifact}
+                  onChange={(e) => setReturnArtifact(e.target.checked)}
+                />
+                Return Artifact
+              </label>
+              <label className={styles.checkbox}>
+                <input
+                  type="checkbox"
+                  checked={returnWasm}
+                  onChange={(e) => setReturnWasm(e.target.checked)}
+                />
+                Return WASM
+              </label>
             </div>
             <div className={styles.output}>
               {isRunning ? (
@@ -245,31 +226,54 @@ export default function PlaygroundPage() {
                 <pre>{output}</pre>
               ) : (
                 <div className={styles.placeholder}>
-                  Click "Run" to execute your code
+                  Output will appear here after execution
                 </div>
               )}
             </div>
           </div>
         </div>
 
-        <div className={styles.statusBar}>
-          <div className={styles.statusLeft}>
-            <span className={styles.statusItem}>
-              <span className={styles.statusDot}></span>
-              Ready
-            </span>
-            <span className={styles.statusItem}>
-              {selectedLang.charAt(0).toUpperCase() + selectedLang.slice(1)}
-            </span>
+        {/* Bottom Controls */}
+        <div className={styles.bottomControls}>
+          <div className={styles.envSection}>
+            <label className={styles.envLabel}>
+              Environment Variables <span className={styles.envHint}>(optional, KEY=value format, one per line)</span>
+            </label>
+            <textarea
+              className={styles.envInput}
+              value={envVars}
+              onChange={(e) => setEnvVars(e.target.value)}
+              rows={2}
+            />
           </div>
-          <div className={styles.statusRight}>
-            <span className={styles.statusItem}>
-              network: {networkMode}
-            </span>
-            <span className={styles.statusItem}>
-              ttl: 30s
-            </span>
+
+          <div className={styles.filesSection}>
+            <label className={styles.filesLabel}>
+              Input Files 📁
+            </label>
+            <div className={styles.fileUpload}>
+              <button className={styles.chooseFilesBtn}>Choose files</button>
+              <span className={styles.noFile}>No file chosen</span>
+            </div>
+            <span className={styles.filesHint}>Max 10 files, 5MB each, 10MB total</span>
           </div>
+
+          <button
+            className={styles.executeBtn}
+            onClick={handleRun}
+            disabled={isRunning || !code}
+          >
+            {isRunning ? "Executing..." : "Execute Code ▶"}
+          </button>
+
+          <label className={styles.autoFixCheckbox}>
+            <input
+              type="checkbox"
+              checked={autoFix}
+              onChange={(e) => setAutoFix(e.target.checked)}
+            />
+            Auto attempt to fix code issues
+          </label>
         </div>
       </div>
     </>

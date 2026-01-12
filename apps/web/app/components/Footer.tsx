@@ -3,22 +3,21 @@ import styles from "./Footer.module.css";
 
 const footerLinks = {
   product: [
-    { label: "Execute", href: "/docs" },
-    { label: "Sessions", href: "/docs#sessions" },
-    { label: "Services", href: "/docs#services" },
-    { label: "Snapshots", href: "/docs#snapshots" },
+    { label: "Playground", href: "/playground" },
+    { label: "Console", href: "/console" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Pricing for Agents", href: "/pricing#agents" },
   ],
   developers: [
-    { label: "Documentation", href: "/docs" },
-    { label: "API Reference", href: "/docs" },
+    { label: "Docs", href: "/docs" },
     { label: "CLI", href: "/docs#cli" },
-    { label: "Examples", href: "/docs#examples" },
+    { label: "Blog", href: "/blog" },
+    { label: "llms.txt", href: "/llms.txt" },
   ],
   company: [
-    { label: "Blog", href: "/blog" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Terms", href: "/terms" },
-    { label: "Privacy", href: "/privacy" },
+    { label: "Sitemap", href: "/sitemap" },
+    { label: "Terms of Use", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
   ],
 };
 
@@ -31,14 +30,11 @@ export function Footer() {
             <div className={styles.logo}>
               <span className={styles.logoIcon}>▸</span>
               <span className={styles.logoText}>unsandbox</span>
+              <span className={styles.logoDomain}>.com</span>
             </div>
             <p className={styles.tagline}>
-              Run code safely anywhere, instantly.
+              Anonymous remote code, compile, &amp; execution API for humans &amp; machine learning agents.
             </p>
-            <div className={styles.status}>
-              <span className={styles.statusDot}></span>
-              <span>All systems operational</span>
-            </div>
           </div>
 
           <div className={styles.linkGroup}>
@@ -87,8 +83,12 @@ export function Footer() {
           </Link>
         </div>
 
+        <div className={styles.quote}>
+          <p>&ldquo;This service validates its own documentation across 42+ languages without installing a single compiler locally. Every code example is executed remotely through the API it documents.&rdquo;</p>
+        </div>
+
         <div className={styles.bottom}>
-          <p>&copy; {new Date().getFullYear()} unsandbox. Remote code execution infrastructure.</p>
+          <p>unsandbox.com &copy; {new Date().getFullYear()} &mdash; Anonymous remote code, compile, &amp; execution API for humans &amp; machine learning agents.</p>
         </div>
       </div>
     </footer>

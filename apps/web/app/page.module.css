@@ -68,6 +68,11 @@
   letter-spacing: -0.02em;
 }
 
+.heroAccent {
+  color: var(--color-accent);
+  text-shadow: 0 0 40px rgba(192, 181, 95, 0.4);
+}
+
 .heroSubtitle {
   font-size: var(--font-size-body);
   color: var(--color-text-muted);
@@ -638,36 +643,144 @@
   color: var(--color-accent-strong);
 }
 
-/* Pricing Teaser */
-.pricingTeaser {
+/* Resources */
+.resources {
   padding: var(--space-9) 0;
   background: var(--color-bg);
 }
 
-.pricingCard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-7);
-  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 100%);
-  border: 1px solid var(--color-accent);
-  border-radius: var(--radius-3);
-  box-shadow: 0 0 30px rgba(192, 181, 95, 0.1);
+.resourceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
 }
 
-.pricingContent h2 {
-  font-size: var(--font-size-h2);
+.resourceCard {
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-3);
+  transition: all var(--transition-fast);
+}
+
+.resourceCard:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.resourceTitle {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+.resourceDesc {
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+}
+
+.resourceLink {
+  display: block;
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  text-align: center;
+  border-radius: var(--radius-2);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-small);
+  transition: all var(--transition-fast);
+}
+
+.resourceLink:hover {
+  background: var(--color-accent-strong);
+  box-shadow: 0 0 15px rgba(192, 181, 95, 0.3);
+}
+
+/* Pricing Teaser */
+.pricingTeaser {
+  padding: var(--space-9) 0;
+  background: var(--color-surface);
+}
+
+.pricingCompare {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+
+.pricingTier {
+  padding: var(--space-6);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-3);
+  text-align: center;
+}
+
+.pricingVs {
+  padding: var(--space-6);
+  background: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-3);
+  text-align: center;
+  position: relative;
+}
+
+.tierLabel {
+  display: block;
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.vsLabel {
+  display: block;
+  font-size: var(--font-size-small);
+  color: var(--color-danger);
+  margin-bottom: var(--space-3);
+}
+
+.tierPrice {
+  margin-bottom: var(--space-3);
+}
+
+.price {
+  font-size: var(--font-size-h1);
   font-weight: var(--font-weight-bold);
   color: var(--color-text);
-  margin-bottom: var(--space-2);
 }
 
-.pricingContent p {
+.priceStrike {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-danger);
+  text-decoration: line-through;
+}
+
+.period {
   font-size: var(--font-size-body);
   color: var(--color-text-muted);
 }
 
+.tierSpecs {
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+}
+
+.savingsText {
+  font-size: var(--font-size-micro);
+  color: var(--color-success);
+  margin-top: var(--space-3);
+}
+
 .pricingBtn {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
   padding: var(--space-4) var(--space-6);
   background: var(--color-accent);
   color: var(--color-bg);
@@ -706,6 +819,14 @@
     grid-template-columns: 1fr;
   }
 
+  .resourceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricingCompare {
+    grid-template-columns: 1fr;
+  }
+
   .consolePreview {
     grid-template-columns: 1fr;
   }
@@ -730,12 +851,6 @@
 
   .featureGrid {
     grid-template-columns: 1fr;
-  }
-
-  .pricingCard {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--space-5);
   }
 
   .heroCtas {

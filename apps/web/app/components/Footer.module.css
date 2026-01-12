@@ -38,13 +38,18 @@
 }
 
 .logoText {
-  color: var(--color-text);
+  color: var(--color-accent);
+}
+
+.logoDomain {
+  color: var(--color-text-muted);
 }
 
 .tagline {
   color: var(--color-text-muted);
   font-size: var(--font-size-small);
-  max-width: 280px;
+  max-width: 320px;
+  line-height: 1.5;
 }
 
 .status {
@@ -142,6 +147,24 @@
 .ctaBtnPrimary:hover {
   background: var(--color-accent-strong);
   box-shadow: 0 0 15px rgba(192, 181, 95, 0.4);
+}
+
+.quote {
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-3);
+  text-align: center;
+}
+
+.quote p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .bottom {

@@ -38,40 +38,61 @@ const features = [
   {
     icon: "❄",
     title: "Freeze / Unfreeze",
-    desc: "Pause running containers instantly. Resume exactly where you left off. Pay nothing while frozen.",
+    desc: "Pause containers when idle, wake them instantly on demand. Pay only for active compute time.",
   },
   {
-    icon: "🔒",
-    title: "Zero-Trust Networking",
-    desc: "Isolated network mode by default. No outbound access unless you explicitly allow it.",
+    icon: "🌐",
+    title: "Persistent Services",
+    desc: "Deploy web apps with automatic Let's Encrypt HTTPS. Custom domains, port mapping, and wake-on-request.",
   },
   {
     icon: "📸",
     title: "Container Snapshots",
-    desc: "Capture full container state. Clone environments. Share reproducible setups.",
+    desc: "Save container state and restore later. Clone snapshots to new sessions or services.",
   },
   {
     icon: "💾",
     title: "Deep Freeze",
-    desc: "Archive containers indefinitely. Restore months later with full state preserved.",
+    desc: "Services hibernate when keys expire. Wake them years later — data preserved indefinitely.",
   },
 ];
 
 const useCases = [
   {
     title: "AI Code Assistants",
-    desc: "Execute code from LLM outputs safely. Perfect for coding agents and tool-use patterns.",
-    languages: ["python", "javascript", "rust"],
+    desc: "Execute code from LLM outputs safely. Perfect for coding agents and tool-use patterns with async job polling.",
+    languages: ["python", "javascript", "typescript"],
   },
   {
-    title: "Demo & Playground Apps",
-    desc: "Let users run code in your product without infrastructure headaches.",
-    languages: ["go", "java", "typescript"],
+    title: "Code Playgrounds",
+    desc: "Let users run code in your product. 42+ languages supported without infrastructure headaches.",
+    languages: ["go", "rust", "java"],
   },
   {
     title: "Remote Development",
     desc: "Full dev environments in the cloud. SSH access, persistent sessions, custom runtimes.",
     languages: ["c++", "ruby", "php"],
+  },
+];
+
+const resources = [
+  {
+    title: "API Docs",
+    desc: "Complete endpoint documentation with code samples in 42+ languages.",
+    link: "/docs",
+    cta: "View Docs",
+  },
+  {
+    title: "CLI",
+    desc: "Command-line client for sessions, services, and executions.",
+    link: "/docs#cli",
+    cta: "Get CLI",
+  },
+  {
+    title: "Blog",
+    desc: "Deep Unfreeze: Services that sleep for decades, then wake up when anyone pays the toll.",
+    link: "/blog",
+    cta: "Read More",
   },
 ];
 
@@ -106,24 +127,29 @@ export default function Home() {
               42+ languages supported
             </div>
             <h1 className={styles.heroTitle}>
-              Remote Code Execution API
+              Code Execution API<br />
+              <span className={styles.heroAccent}>for AI Agents</span>
             </h1>
             <p className={styles.heroSubtitle}>
-              Run untrusted code in isolated containers — as one-shot executions,
-              interactive sessions, or deployable services — with snapshots and zero-trust networking.
+              Execute code in 42+ languages via a simple REST API. Interactive sessions,
+              persistent services with HTTPS, snapshots, and async job polling with cancellation
+              — perfect for LLM tool use.
             </p>
             <div className={styles.heroCtas}>
               <Link href="/playground" className={styles.primaryBtn}>
-                <span>▶</span> Open Playground
+                Playground
               </Link>
-              <Link href="/docs" className={styles.secondaryBtn}>
-                Quickstart
-              </Link>
-              <Link href="/pricing" className={styles.ghostBtn}>
+              <Link href="/pricing" className={styles.secondaryBtn}>
                 View Pricing
+              </Link>
+              <Link href="/docs" className={styles.ghostBtn}>
+                API Docs
               </Link>
               <Link href="/docs#cli" className={styles.ghostBtn}>
                 CLI
+              </Link>
+              <Link href="/console" className={styles.ghostBtn}>
+                Console
               </Link>
             </div>
           </div>
@@ -296,18 +322,58 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Resources */}
+        <section className={styles.resources}>
+          <div className={styles.container}>
+            <h2 className={styles.sectionTitle}>Resources</h2>
+            <div className={styles.resourceGrid}>
+              {resources.map((resource) => (
+                <div key={resource.title} className={styles.resourceCard}>
+                  <h3 className={styles.resourceTitle}>{resource.title}</h3>
+                  <p className={styles.resourceDesc}>{resource.desc}</p>
+                  <Link href={resource.link} className={styles.resourceLink}>
+                    {resource.cta}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Pricing Teaser */}
         <section className={styles.pricingTeaser}>
           <div className={styles.container}>
-            <div className={styles.pricingCard}>
-              <div className={styles.pricingContent}>
-                <h2>Start free</h2>
-                <p>1 concurrent container, 1 request per 42 seconds. No credit card required.</p>
+            <h2 className={styles.sectionTitle}>Simple Pricing</h2>
+            <div className={styles.pricingCompare}>
+              <div className={styles.pricingTier}>
+                <span className={styles.tierLabel}>Development</span>
+                <div className={styles.tierPrice}>
+                  <span className={styles.price}>$7</span>
+                  <span className={styles.period}>/mo</span>
+                </div>
+                <p className={styles.tierSpecs}>1 vCPU, 2GB RAM</p>
               </div>
-              <Link href="/pricing" className={styles.pricingBtn}>
-                View all plans →
-              </Link>
+              <div className={styles.pricingVs}>
+                <span className={styles.vsLabel}>vs. AWS ECS Fargate</span>
+                <div className={styles.tierPrice}>
+                  <span className={styles.priceStrike}>$30</span>
+                  <span className={styles.period}>/mo</span>
+                </div>
+                <p className={styles.tierSpecs}>1 vCPU, 2GB RAM</p>
+                <p className={styles.savingsText}>Save 77% monthly or up to 83% yearly</p>
+              </div>
+              <div className={styles.pricingTier}>
+                <span className={styles.tierLabel}>Production</span>
+                <div className={styles.tierPrice}>
+                  <span className={styles.price}>$91</span>
+                  <span className={styles.period}>/mo</span>
+                </div>
+                <p className={styles.tierSpecs}>4 concurrent, 91 RPM</p>
+              </div>
             </div>
+            <Link href="/pricing" className={styles.pricingBtn}>
+              View Full Pricing →
+            </Link>
           </div>
         </section>
       </main>
